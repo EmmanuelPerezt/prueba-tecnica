@@ -9,7 +9,7 @@ import { Tracking} from "../dist/models/tracking.js";
 
 export const AppDataSource= new DataSource({
     type: 'postgres',
-    host: 'localhost',
+    host: 'postgres_container',
     port:  5432,
     username: 'admin',
     password: 'admin',
