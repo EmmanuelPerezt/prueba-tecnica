@@ -15,6 +15,25 @@ docker-compose up -d
 la api corre en el puerto 3000 y puede visitar la documentacion de swagger en:
 http://localhost:3000/api-docs
 
+### URL
+`http://localhost:3000/imagen/upload`
+
+### Parámetros de Consulta (Query Parameters)
+
+Los siguientes parámetros son opcionales y se pueden incluir en la URL para personalizar el procesamiento de la imagen:
+
+| Parámetro        | Tipo      | Descripción                                                                                         | Ejemplo                                  |
+|------------------|-----------|-----------------------------------------------------------------------------------------------------|------------------------------------------|
+| `width`          | Integer   | Establece el ancho de la imagen redimensionada.                                                      | `width=200`                             |
+| `height`         | Integer   | Establece la altura de la imagen redimensionada.                                                     | `height=300`                            |
+| `grayscale`      | Boolean   | Convierte la imagen a escala de grises.                                                             | `grayscale=true`                        |
+| `quality`        | Integer   | Establece la calidad del archivo de salida en una escala de 0 a 100 (para JPEG).                   | `quality=80`                            |
+| `rotate`         | Integer   | Rota la imagen en los grados especificados.                                                         | `rotate=90`                             |
+| `crop`           | String    | Recorta la imagen en la posición y tamaño especificados en el formato `left,top,width,height`.       | `crop=100,200,300,400`                  |
+| `contrast`       | Float     | Ajusta el contraste de la imagen. El valor predeterminado es 1. Los valores mayores aumentan el contraste. | `contrast=1.5`                          |
+| `saturation`     | Float     | Ajusta la saturación de los colores de la imagen. El valor predeterminado es 1. Los valores mayores aumentan la saturación. | `saturation=1.2`                        |
+| `watermarkText`  | String    | Agrega un texto como marca de agua a la imagen.                                                      | `watermarkText=MyWatermark`             |
+| `format`         | String    | Cambia el formato de la imagen de salida. Los formatos soportados 
 
 # preguntas
 

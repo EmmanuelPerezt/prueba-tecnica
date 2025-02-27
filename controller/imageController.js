@@ -20,13 +20,12 @@ export const uploadImage = async (req, res) => {
     }
     //en esta parte haremos el manejo de edicion de la imagen subida
     //por ejemplo, cambiar el tamaño, el formato, etc.
-    const { width, height, grayscale, quality } = req.query;
+    const { width, height, grayscale, quality, rotate, crop, contrast, saturation, watermarkText, format, quality: qualityParam } = req.query;
     const uploadDir = path.join(__dirname, "../uploads");
-    const rutapath = `edited_${req.user}_${Date.now()}${path.extname(req.file.originalname)}`;
-    const editpath = path.join(
-      uploadDir,rutapath
-      
-    );
+    const rutapath = `edited_${req.user}_${Date.now()}${path.extname(
+      req.file.originalname
+    )}`;
+    const editpath = path.join(uploadDir, rutapath);
     const originalPath = path.join(uploadDir, req.fileRoute);
     //nos aseguramos de haya querys en la url para no duplicar la imagen
     if (Object.keys(req.query).length > 0) {
@@ -40,6 +39,53 @@ export const uploadImage = async (req, res) => {
       if (quality) {
         image = image.jpeg({ quality: parseInt(quality) });
       }
+      // Rotar imagen
+      if (rotate) {
+        image = image.rotate(parseInt(rotate));
+      }
+
+      // Recortar imagen
+      if (crop) {
+        const [left, top, cropWidth, cropHeight] = crop.split(",").map(Number);
+        image = image.extract({
+          left,
+          top,
+          width: cropWidth,
+          height: cropHeight,
+        });
+      }
+
+      // Ajuste de contraste
+      if (contrast) {
+        image = image.modulate({ contrast: parseFloat(contrast) });
+      }
+
+      // Ajuste de saturación
+      if (saturation) {
+        image = image.modulate({ saturation: parseFloat(saturation) });
+      }
+
+      // Añadir texto como marca de agua
+      if (watermarkText) {
+        image = image.composite([
+          {
+            input: Buffer.from(
+              `<svg><text x="10" y="20" font-size="24" fill="white">${watermarkText}</text></svg>`
+            ),
+            gravity: "southeast", // Posición de la marca de agua
+          },
+        ]);
+      }
+
+      // Cambiar formato (ejemplo: convertir a PNG)
+      if (format) {
+        if (format === "webp") {
+          image = image.webp({ quality: 80 });
+        } else if (format === "png") {
+          image = image.png();
+        }
+      }
+
       //guardar la imagen editada en el gestor de archivos local
       await image.toFile(editpath);
 
@@ -81,8 +127,6 @@ export const uploadImage = async (req, res) => {
 
 // funcion para obtener todas las imagenes de un usuario
 
-
-
 export const getImages = async (req, res) => {
   const username = req.params.username;
 
@@ -99,19 +143,21 @@ export const getImages = async (req, res) => {
     // Generar las URLs accesibles
     const userImages = images.map((image) => ({
       fileName: image.fileName,
-      url: `${req.protocol}://${req.get("host")}/imagen/uploads/${image.fileName}`,
+      url: `${req.protocol}://${req.get("host")}/imagen/uploads/${
+        image.fileName
+      }`,
     }));
 
     res.status(200).json(userImages);
   } catch (error) {
-    res.status(500).json({ message: "Error al obtener imágenes", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error al obtener imágenes", error: error.message });
   }
 };
 
 // funcion para servir una imagen
 
-export const serveImage = (req, res) => { 
-
+export const serveImage = (req, res) => {
   res.sendFile(req.filePath);
-
-}
+};
