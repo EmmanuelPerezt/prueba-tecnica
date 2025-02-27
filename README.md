@@ -67,5 +67,4 @@ trabajo?</h3>
 
 
 <h3>¿Qué herramientas o bibliotecas usarías para implementar el sistema de logging?</h3>
-<p>Al ser node js lo mas optimo y mas usaso seria usar winston</p>
-
+<p>Al ser node js lo mas optimo y mas usado seria usar winston</p>
