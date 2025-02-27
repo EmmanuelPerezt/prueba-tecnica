@@ -15,7 +15,7 @@ docker-compose up -d
 la api corre en el puerto 3000 y puede visitar la documentacion de swagger en:
 http://localhost:3000/api-docs
 
-### URL
+### URL para subida de archivos
 `http://localhost:3000/imagen/upload`
 
 ### Parámetros de Consulta (Query Parameters)
