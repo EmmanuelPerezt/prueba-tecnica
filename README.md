@@ -1,4 +1,4 @@
-# prueba tecnica de inbest
+# Prueba tecnica de inbest
 
 esta es mi solucion hacia la prueba tecnica solicitada a continuacion describo un poco las caracteristicas
 
@@ -35,7 +35,7 @@ Los siguientes parámetros son opcionales y se pueden incluir en la URL para per
 | `watermarkText`  | String    | Agrega un texto como marca de agua a la imagen.                                                      | `watermarkText=MyWatermark`             |
 | `format`         | String    | Cambia el formato de la imagen de salida. Los formatos soportados 
 
-# preguntas
+# Preguntas
 
 <h3> ¿Qué lenguaje y framework elegirías y por qué?</h3>
 <p>para esta ocasion en el backend utilizamos node js con express ya que son tecnologias que domino bien</p>
@@ -68,4 +68,3 @@ trabajo?</h3>
 <h3>¿Qué herramientas o bibliotecas usarías para implementar el sistema de logging?</h3>
 <p>al ser node js lo mas optimo y mas usaso seria usar winston</p>
 
-# diagrama
