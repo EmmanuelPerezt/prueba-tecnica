@@ -20,7 +20,7 @@ http://localhost:3000/api-docs
 
 <h3> ¿Qué lenguaje y framework elegirías y por qué?</h3>
 <p>para esta ocasion en el backend utilizamos node js con express ya que son tecnologias que domino bien</p>
-<h3> o ¿Cómo estructurarías controladores y servicios en el framework elegido?</h3>
+<h3> ¿Cómo estructurarías controladores y servicios en el framework elegido?</h3>
 <p>en este caso el patron de diseño fue practicamente MVC creo que le da limpieza al proyecto y es adecuado/legible y escalable a largo plazo</p>
 <h3> ¿Qué servicios en la nube usarías para almacenar imágenes?</h3>
 <p>amazon s3 seria una opcion ideal en este caso</p>
