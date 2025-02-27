@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import { fileURLToPath } from 'url';
 import { Tracking } from "../dist/models/tracking.js";
 import { AppDataSource } from "../config/databaseConfig.js";
-import { console } from "inspector";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +32,7 @@ const verifyImageAccess = async (req, res, next) => {
         return res.status(403).json({ message: "Acceso prohibido: No tienes acceso a este archivo" });
       }
   
-      const filePath = path.join(UPLOADS_DIR, image.fileName);
+      const filePath = path.join(UPLOADS_DIR, fileName);
 
       if (!fs.existsSync(filePath)) {
         return res.status(404).json({ message: "Archivo no encontrado",ruta:fs.existsSync(filePath) });

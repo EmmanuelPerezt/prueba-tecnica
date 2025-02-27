@@ -22,9 +22,10 @@ export const uploadImage = async (req, res) => {
     //por ejemplo, cambiar el tamaño, el formato, etc.
     const { width, height, grayscale, quality } = req.query;
     const uploadDir = path.join(__dirname, "../uploads");
+    const rutapath = `edited_${req.user}_${Date.now()}${path.extname(req.file.originalname)}`;
     const editpath = path.join(
-      uploadDir,
-      `${req.user}_${Date.now()}_edited${path.extname(req.file.originalname)}`
+      uploadDir,rutapath
+      
     );
     const originalPath = path.join(uploadDir, req.fileRoute);
     //nos aseguramos de haya querys en la url para no duplicar la imagen
@@ -45,7 +46,7 @@ export const uploadImage = async (req, res) => {
       //guardar el tracking del archivo editado
       const trackingItemEdit = trackingRepository.create({
         user: req.user,
-        fileName: `${req.user}_${Date.now()}_edited${path.extname(req.file.originalname)}`,
+        fileName: rutapath,
       });
       await trackingRepository.save(trackingItemEdit);
     }
