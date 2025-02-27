@@ -56,7 +56,7 @@ de análisis en Postgres?</h3>
 <p>Para este proyecto use typeorm ya que se integra perfecto con nodejs</p>
 
 <h3>¿Qué biblioteca o herramienta usarías y por qué?</h3>
-<p>Use sharp ya que es una libreria muy facil de usar y muy rapida, por lo que puse adecuarme a ella rapidamente</p>
+<p>Use sharp ya que es una libreria muy facil de usar y muy rapida, por lo que pude adecuarme a ella rapidamente</p>
 <h3>¿Cómo optimizarías el procesamiento de imágenes para alto rendimiento?</h3>
 <p>Se podria distribuir el procesamiento de las imagenes en multiples hilos, asi como compirmir las imagenes</p>
 
